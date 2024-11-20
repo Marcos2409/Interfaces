@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+}
+
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 2em;
+  font-size: 1em;
+
+  .menu-lateral {
+    display: flex;
+    justify-content: flex-start;
+
+    ul {
+      color: light-dark(var(--menu-fg-light), var(--menu-fg-dark));
+      list-style: none;
+      display: flex;
+
+      li {
+        text-align: center;
+        padding: 1em 2em;
+
+        &:has(> .submenu) {
+          height: 1em;
+          padding-bottom: 1em;
+        }
+
+        ul.submenu {
+          visibility: hidden;
+          opacity: 0;
+          margin-top: 1em;
+          flex-direction: column;
+          background-color: light-dark(var(--submenu-bg-light), var(--submenu-bg-dark));
+          transform-origin: top center;
+          transform: scaleY(0.8);
+          transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        &:hover {
+          background-color: light-dark(
+            var(--menu-hover-bg-light),
+            var(--menu-hover-bg-dark)
+          );
+          transition: background-color 0.3s ease;
+
+          ul.submenu {
+            visibility: visible;
+            opacity: 1;
+            transform: scaleY(1);
+          }
+
+          li {
+            padding: 0.5em 2em;
+          }
+        }
+      }
+    }
+
+    form {
+      align-self: center;
+      margin-left: 2em;
+
+      input[type="text"] {
+        padding: 0.4em;
+        border: 2px solid;
+        border-color:  light-dark(var(--input-border-light), var(--input-border-dark));
+        border-radius: 0.2em;
+        font-size: 0.6em;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: light-dark(
+            var(--input-focus-border-light),
+            var(--input-focus-border-dark)
+          );
+        }
+      }
+
+      button {
+        padding: 0.5em;
+        border-radius: 0.3em;
+        color: white;
+        border-style: none;
+        background-color: light-dark(var(--button-bg-light), var(--button-bg-dark));
+      }
+    }
+  }
+}
